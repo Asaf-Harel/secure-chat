@@ -14,7 +14,7 @@ def ___are_equal(string: str, num: int):
 
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-if len(sys.argv) != 2:
+if len(sys.argv) < 2:
     print("Correct usage: script, IP address")
     exit()
 
