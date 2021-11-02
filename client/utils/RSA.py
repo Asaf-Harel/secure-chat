@@ -67,8 +67,3 @@ def decrypt(encrypted_text: list, key: tuple):
     decrypted_numbers = [chr((num ** d) % n) for num in encrypted_text]
     decrypted = ''.join(decrypted_numbers)
     return decrypted
-
-
-l = [15398, 40087, 15357, 31187, 15357, 31187, 15357, 31187, 33304, 40582, 50394, 34503, 13608, 26418, 25111, 25111,
-     24342, 45215]
-print(decrypt(l, (17351, 50429)))

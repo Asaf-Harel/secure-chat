@@ -89,14 +89,15 @@ class Server:
         # conn.send('200'.encode('utf-8'))  # Send Confirmation
 
     def __broadcast(self, msg, conn):
-        for clients in self.__list_of_clients:
+        for client in self.__list_of_clients:
             try:
-                key = users.get_key(clients[1][0])
-                encrypted = encrypt(msg, key)
-                clients[0].send(pickle.dumps(encrypted))
+                if client[0] != conn:
+                    key = users.get_key(client[1][0])
+                    encrypted = encrypt(msg, key)
+                    client[0].send(pickle.dumps(encrypted))
             except:
-                clients[0].close()
-                self.__remove(clients)
+                client[0].close()
+                self.__remove(client)
 
     def __remove(self, client):
         if client in self.__list_of_clients:
